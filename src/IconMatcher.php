@@ -42,13 +42,59 @@ class IconMatcher
         return null;
     }
 
-    public function emoji($label)
+    public function html($label)
     {
         $rule = $this->match($label);
-        if (!$rule || !isset($rule['emoji'])) {
+        if (!$rule) {
             return '';
         }
-        return (string) $rule['emoji'];
+        $inner = $this->inner($rule);
+        if ($inner === '') {
+            return '';
+        }
+        return '<span class="icon-match" aria-hidden="true">' . $inner . '</span>';
+    }
+
+    private function inner(array $rule)
+    {
+        if (isset($rule['emoji']) && (string) $rule['emoji'] !== '') {
+            return $this->escape((string) $rule['emoji']);
+        }
+        if (!empty($rule['font'])) {
+            $class = trim((string) $rule['font']);
+            if (!preg_match('/^[\w\-\s]+$/', $class)) {
+                return '';
+            }
+            return '<i class="' . $this->escape($class) . '" aria-hidden="true"></i>';
+        }
+        if (!empty($rule['svg'])) {
+            return (string) $rule['svg'];
+        }
+        if (!empty($rule['src'])) {
+            $src = $this->safeSrc((string) $rule['src']);
+            if ($src === '') {
+                return '';
+            }
+            return '<img src="' . $this->escape($src) . '" alt="" class="icon-match__img">';
+        }
+        return '';
+    }
+
+    private function safeSrc($src)
+    {
+        $src = trim($src);
+        if ($src === '' || preg_match('/^\s*javascript:/i', $src)) {
+            return '';
+        }
+        if (preg_match('#^(?:https?:)?//#i', $src) || preg_match('#^\.\.?/#', $src) || preg_match('#^[A-Za-z0-9_./-]+$#', $src)) {
+            return $src;
+        }
+        return '';
+    }
+
+    private function escape($value)
+    {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
 
     private function pattern(array $rule)
