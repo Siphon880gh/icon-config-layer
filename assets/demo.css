@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    background: #f6f3ee;
+    color: #2b241c;
+    font: 16px/1.45 "Iowan Old Style", Palatino, Georgia, serif;
+}
+
+main {
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 {
+    margin: 0 0 0.4rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+p {
+    margin: 0 0 1.4rem;
+    color: #5c5146;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid #e4ddd2;
+}
+
+li code {
+    margin-left: auto;
+    color: #7a6d60;
+    font-size: 0.82rem;
+}
+
+.icon-match {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    flex: 0 0 auto;
+}
+
+.icon-match svg,
+.icon-match img {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: block;
+}
