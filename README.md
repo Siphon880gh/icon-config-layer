@@ -2,13 +2,13 @@
 
 Match a label to an icon. A rule is a regular expression plus one of an emoji, a font class, an inline svg, or an image path. The first pattern that fits wins.
 
-The nutrients tracker and the YouTube playlist app both hang icons on names. The sample rules cover words from those two places.
+Devbrain and the YouTube playlist app both hang icons on names. The sample rules cover words from those two places.
 
-## Nutrients
+## Devbrain
 
-Micronutrient cards use a bar icon for food sources and a calendar icon when a nutrient has to be eaten through the day.
+Each topic can have its own icon. In this stretch, API Services is an image, AI Assisted Coding is an svg, and the prompt-engineering topics share a wand.
 
-![Nutrient cards with source and daily-intake icons](docs/screenshots/nutrients-icons.png)
+![Devbrain topics with different icons](docs/screenshots/devbrain-topics.png)
 
 ## Playlists
 
